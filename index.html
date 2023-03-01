@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Profile | IChatApp.Com - Stay Always Connected With Your Loved Ones
+    </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <style>
+      @font-face {
+        font-family: Gilroy-Medium;
+        src: url("fonts/Gilroy-Medium.ttf");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Gilroy-Medium;
+      }
+
+      :root {
+        --primaryColour: #1e90ff;
+        --backgroundColour: #f0f8ff;
+      }
+
+      html,
+      body {
+        height: fit-content;
+        width: 100%;
+        background-color: var(--backgroundColour);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .ctn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 7.5rem 0;
+      }
+
+      .profileSec {
+        height: 500px;
+        width: 600px;
+        background-color: white;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        border-radius: 8.75px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+      }
+
+      .profileSec > .dpImg {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: var(--primaryColour);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+          rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+      }
+
+      .profileSec > .dpImg > img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+        border-radius: 50%;
+      }
+
+      .profileSec > .dpImg > i {
+        font-size: 145px;
+        border-radius: 50%;
+        color: rgba(128, 128, 128, 0.2);
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .profileSec > .dpImg > .dpBtn {
+        border: none;
+        border-radius: 50%;
+        outline: none;
+        margin: 0;
+        height: 145px;
+        width: 145px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: rgba(128, 128, 128, 0.4);
+        transform: translate(-50%, -50%);
+        font-size: 0.8rem;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        color: var(--primaryColour);
+        font-weight: 500;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .dpImg:hover .dpBtn {
+        display: flex;
+      }
+
+      .acInfo {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-top: 2.5rem;
+      }
+
+      .acInfo > h6:nth-child(3) {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .logo {
+        color: var(--primaryColour);
+        font-size: 2.75rem;
+      }
+
+      .roomsBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .roomsBtn > .r1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .roomsBtn > h6 {
+        font-size: 1.2rem;
+        color: var(--primaryColour);
+        word-spacing: 2.5px;
+      }
+
+      .roomsBtn > .r1 > a > button {
+        height: 70px;
+        width: 210px;
+        background-color: rgba(30, 144, 255, 0.9);
+        border: none;
+        color: white;
+        font-weight: 650;
+        font-size: 1.2rem;
+        border-radius: 8.75px;
+        cursor: pointer;
+      }
+
+      .roomsBtn > .r1 > a > button:hover {
+        background-color: var(--primaryColour);
+      }
+
+      .uploadBox {
+        height: 150px;
+        width: 400px;
+        background-color: white;
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        border-radius: 8.75px;
+        display: none;
+        justify-content: space-evenly;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+          rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+      }
+
+      .uploadBox > h6 {
+        color: var(--primaryColour);
+        font-size: 1rem;
+        font-weight: 550;
+        letter-spacing: 0.5px;
+      }
+
+      .uploadBox > form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .uploadBox > form > input {
+        margin: 1rem 0;
+      }
+
+      .uploadBox > form > div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+
+      .uploadBox > form > div > button {
+        height: 35px;
+        width: 105px;
+        background-color: var(--primaryColour);
+        color: white;
+        border: none;
+        border-radius: 8.75px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .uploadBox > form > div > a {
+        height: 35px;
+        width: 105px;
+        background-color: var(--primaryColour);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 8.75px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      @media screen and (min-width: 426px) and (max-width: 650px) {
+        .ctn {
+          margin: 5.5rem 0 1rem 0;
+        }
+
+        .profileSec {
+          height: 360px;
+          width: 420px;
+        }
+
+        .profileSec > .dpImg {
+          height: 120px;
+          width: 120px;
+        }
+
+        .profileSec > .dpImg > img {
+          width: 110px;
+          height: 110px;
+        }
+
+        .profileSec > .dpImg > i {
+          font-size: 115px;
+        }
+
+        .profileSec > .dpImg > .dpBtn {
+          height: 115px;
+          width: 115px;
+        }
+
+        .acInfo {
+          font-size: 2rem;
+          margin-top: 3rem;
+        }
+
+        .roomsBtn > .r1 > a > button {
+          height: 50px;
+          width: 150px;
+          font-weight: 650;
+          font-size: 0.75rem;
+        }
+
+        .roomsBtn > h6 {
+          font-size: 1rem;
+        }
+      }
+
+      @media screen and (min-width: 319px) and (max-width: 426px) {
+        .ctn {
+          margin: 5.5rem 0 1rem 0;
+        }
+
+        .profileSec {
+          height: 400px;
+          width: 300px;
+        }
+
+        .profileSec > .dpImg {
+          height: 110px;
+          width: 110px;
+        }
+
+        .profileSec > .dpImg > img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .profileSec > .dpImg > i {
+          font-size: 105px;
+        }
+
+        .profileSec > .dpImg > .dpBtn {
+          height: 105px;
+          width: 105px;
+        }
+
+        .acInfo {
+          font-size: 2rem;
+          margin-top: 2rem;
+        }
+
+        .roomsBtn > .r1 > a > button {
+          height: 40px;
+          width: 120px;
+          font-weight: 650;
+          font-size: 0.75rem;
+        }
+
+        .roomsBtn > h6 {
+          font-size: 1rem;
+        }
+
+        .uploadBox {
+          height: 150px;
+          width: 290px;
+        }
+      }
+
+      @media screen and (min-width: 0px) and (max-width: 319px) {
+        .ctn {
+          margin: 4rem 0 1rem 0;
+        }
+
+        .profileSec {
+          height: 400px;
+          width: 250px;
+        }
+
+        .profileSec > .dpImg {
+          height: 100px;
+          width: 100px;
+        }
+
+        .profileSec > .dpImg > img {
+          width: 90px;
+          height: 90px;
+        }
+
+        .profileSec > .dpImg > i {
+          font-size: 95px;
+        }
+
+        .profileSec > .dpImg > .dpBtn {
+          height: 95px;
+          width: 95px;
+        }
+
+        .acInfo {
+          font-size: 1.5rem;
+          margin-top: 3rem;
+        }
+
+        .acInfo > h6:nth-child(3) {
+          font-size: 0.75rem;
+        }
+
+        .logo {
+          font-size: 2rem;
+        }
+
+        .roomsBtn > .r1 > a > button {
+          height: 40px;
+          width: 120px;
+          font-weight: 650;
+          font-size: 0.75rem;
+        }
+
+        .roomsBtn > .r1 {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .roomsBtn {
+          gap: 0.5rem;
+        }
+
+        .roomsBtn > h6 {
+          font-size: 1rem;
+        }
+
+        .uploadBox {
+          height: 150px;
+          width: 240px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ctn">
+      <div class="profileSec">
+        <div class="dpImg">
+          <img
+            src="https://images.unsplash.com/photo-1533656812321-1868a4d2b72a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+            alt=""
+          />
+          <i class="ri-account-circle-fill"></i>
+          <button class="dpBtn">Upload Profile Image</button>
+        </div>
+        <div class="acInfo">
+          <i class="ri-whatsapp-fill logo"></i>
+          <h6>Alina Rose</h6>
+          <h6>@iam_alinarose</h6>
+        </div>
+        <div class="roomsBtn">
+          <h6>Select Chat Room</h6>
+          <div class="r1">
+            <a href="/educationalChat"><button>Educational Chat</button></a>
+            <a href="/politicalChat"><button>Political Chat</button></a>
+          </div>
+          <div class="r1">
+            <a href="/friendsChat"><button>Friends Chat</button></a>
+            <a href="/familyChat"><button>Family Chat</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="uploadBox">
+      <h6>Upload Your Profile Image</h6>
+      <form action="/uploadImg" method="post">
+        <input type="file" name="dpImg" />
+        <div>
+          <button type="submit">Upload Image</button>
+          <a id="cancel">Cancel</a>
+        </div>
+      </form>
+    </div>
+    <script>
+      document.querySelector(".dpBtn").addEventListener("click", () => {
+        document.querySelector(".uploadBox").style.display = "flex";
+      });
+      document.querySelector("#cancel").addEventListener("click", () => {
+        document.querySelector(".uploadBox").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
